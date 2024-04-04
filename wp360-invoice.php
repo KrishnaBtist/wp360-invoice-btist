@@ -4,7 +4,7 @@
   Description: The WP360 Invoice Plugin provides an intuitive solution to manage and create invoices seamlessly for woocommerce websites. 
   Requires at least: WP 5.2.0
   License:GPL2
-  Tested up to: WP 6.5.5
+  Tested up to: WP 6.5.6
   Author: wp360
   Author URI: https://wp360.in/
   Version: 1.0.0
@@ -32,6 +32,7 @@ require_once('front/myaccount_invoice_tab.php');
 require_once('front/view_invoice.php');
 require_once('wp360_plugin_update.php');
 
+echo "this is new code for push";
 
 // register_activation_hook( __FILE__, 'wooRequiredNotice' );
 // function wooRequiredNotice() {
@@ -58,7 +59,7 @@ function wp360_admin_notice_notice(){
     if( get_transient( 'wp360-admin-notice-error' ) ){
         ?>
         <div class="notice notice-error is-dismissible">
-            <p><?php esc_attr_e( 'wp360 Invoice plugin requires Woocommerce plugin to be install and active.', 'wp360-invoice' ); ?></p>
+            <p><?php esc_attr_e( 'wp360 Invoice plugin requires Woocommerce plugin to be install and active. this is my ', 'wp360-invoice' ); ?></p>
         </div>
         <?php
         delete_transient( 'wp360-admin-notice-error' );
