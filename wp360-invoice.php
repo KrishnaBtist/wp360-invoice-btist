@@ -32,7 +32,7 @@ require_once('front/myaccount_invoice_tab.php');
 require_once('front/view_invoice.php');
 require_once('wp360_plugin_update.php');
 
-echo "this is new code for push testing 2nd time";
+echo "this is new code for push testing 3nd time ";
 
 // register_activation_hook( __FILE__, 'wooRequiredNotice' );
 // function wooRequiredNotice() {
@@ -59,7 +59,7 @@ function wp360_admin_notice_notice(){
     if( get_transient( 'wp360-admin-notice-error' ) ){
         ?>
         <div class="notice notice-error is-dismissible">
-            <p><?php esc_attr_e( 'wp360 Invoice plugin requires Woocommerce plugin to be install and active. this is my testing 2nd time ', 'wp360-invoice' ); ?></p>
+            <p><?php esc_attr_e( 'wp360 Invoice plugin requires Woocommerce plugin to be install and active. this is my testing 3nd time ', 'wp360-invoice' ); ?></p>
         </div>
         <?php
         delete_transient( 'wp360-admin-notice-error' );
