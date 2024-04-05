@@ -32,9 +32,9 @@ require_once('front/myaccount_invoice_tab.php');
 require_once('front/view_invoice.php');
 require_once('wp360_plugin_update.php');
 
-add_action('wp_head',function(){
-    echo "this is new code for push testing 4th time Version 4";
-});
+// add_action('wp_head',function(){
+//     echo "this is new code for push testing 4th time Version 4";
+// });
 // register_activation_hook( __FILE__, 'wooRequiredNotice' );
 // function wooRequiredNotice() {
 //     if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) and current_user_can( 'activate_plugins' ) ) :
