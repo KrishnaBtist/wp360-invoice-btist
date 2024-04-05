@@ -60,7 +60,7 @@ function wp360_admin_notice_notice(){
     if( get_transient( 'wp360-admin-notice-error' ) ){
         ?>
         <div class="notice notice-error is-dismissible">
-            <p><?php esc_attr_e( 'wp360 Invoice plugin requires Woocommerce plugin to be install and active. this is my testing 4th time ', 'wp360-invoice' ); ?></p>
+            <p><?php esc_attr_e( 'wp360 Invoice plugin requires Woocommerce plugin to be install and active. removecomment ', 'wp360-invoice' ); ?></p>
         </div>
         <?php
         delete_transient( 'wp360-admin-notice-error' );
