@@ -33,7 +33,7 @@ require_once('front/view_invoice.php');
 require_once('wp360_plugin_update.php');
 
 add_action('wp_head',function(){
-    echo "this is new code for push testing 4th time";
+    echo "this is new code for push testing 4th time Version 4";
 });
 // register_activation_hook( __FILE__, 'wooRequiredNotice' );
 // function wooRequiredNotice() {
