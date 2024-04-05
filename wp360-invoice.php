@@ -7,7 +7,7 @@
   Tested up to: WP 6.5.6
   Author: wp360
   Author URI: https://wp360.in/
-  Version: 1.0.5
+  Version: 1.0.6
   Text Domain: wp360-invoice
  */
 
