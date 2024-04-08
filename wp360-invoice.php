@@ -1,7 +1,7 @@
 <?php
 /*
   Plugin Name: Wp360 Invoice
-  Description: The WP360 Invoice Plugin provides an intuitive solution to manage and create invoices seamlessly for woocommerce websites. 
+  Description: The WP360 Invoice Plugin provides an intuitive solution to manage and create invoices seamlessly for woocommerce websites checking everywhere. 
   Requires at least: WP 5.2.0
   License:GPL2
   Tested up to: WP 6.5.6
