@@ -51,3 +51,44 @@ jQuery(document).ready(function($) {
 
 }); 
 
+jQuery(document).on('click','.wp360-invoice-update-click',function(e){
+    e.preventDefault();
+    $this =  jQuery(this);
+    var data = {
+        'action': 'update_wp360_invoice' // Action to handle in PHP
+    };
+    jQuery.ajax({
+        url: wp360_admin_data.ajax_url, // WordPress AJAX URL
+        type: 'POST',
+        data: data,
+        beforeSend: function() {
+          jQuery('.update-message').append('<span class="updating-message">Updating...</span>');
+        },
+        success: function(response) {
+            let responseData = JSON.parse(response);
+            var trElement    = jQuery('tr[data-slug="wp360-invoice"]');
+            var divElement   = trElement.find('.plugin-version-author-uri');
+            divElement.html('Version ' + responseData.aviliableVersion + ' | By <a href="https://wp360.in/">wp360</a>');
+
+            jQuery('.updating-message').remove();
+            jQuery('.plugin-update-tr').remove();
+            //CUSTOM COUNT
+            var pluginCountElement = $('.plugin-count');
+            if (pluginCountElement.length) {
+                var currentCount = parseInt(pluginCountElement.text());
+                console.log("currentCount: " + currentCount);
+                var newCount = currentCount - 1;
+                console.log("New count: " + newCount);
+                pluginCountElement.text(newCount);
+            }
+
+          
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+            jQuery('.updating-message').remove();
+        }
+    });
+
+
+});

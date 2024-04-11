@@ -1,13 +1,13 @@
 <?php
 /*
   Plugin Name: Wp360 Invoice
-  Description: The WP360 Invoice Plugin provides an intuitive solution to manage and create invoices seamlessly for woocommerce websites. 
+  Description: The WP360 Invoice Plugin provides an intuitive solution to manage and create invoices seamlessly for woocommerce websites checking everywhere. 
   Requires at least: WP 5.2.0
   License:GPL2
   Tested up to: WP 6.5.6
   Author: wp360
   Author URI: https://wp360.in/
-  Version: 1.0.8
+  Version: 1.0.9
   Text Domain: wp360-invoice
  */
 
@@ -30,7 +30,7 @@ require_once('suite/index.php');
 require_once('inc/functions.php');
 require_once('front/myaccount_invoice_tab.php');
 require_once('front/view_invoice.php');
-require_once('wp360_plugin_update.php');
+require_once('wp360_update.php');
 
 // add_action('wp_head',function(){
 //     echo "this is new code for push testing 4th time Version 4";
@@ -90,6 +90,12 @@ function wp360invoice_pluginAdminScripts() {
     wp_enqueue_style(WP360_SLUG.'_suite_style', plugin_dir_url(__FILE__).'suite/suite.css', array(), WP360_VERSION);
     wp_enqueue_script('jquery', false, array(), true, true); // Load jQuery in the footer
     wp_enqueue_script(WP360_SLUG.'_admin_js', plugin_dir_url(__FILE__).'admin/js/admin_script.js', array('jquery'), WP360_VERSION,true);  
+    $localization_data = array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'some_variable' => 'some_value', // Add more data as needed
+    );
+    wp_localize_script(WP360_SLUG.'_admin_js', 'wp360_admin_data', $localization_data);
+
 }
 
 
