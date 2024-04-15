@@ -38,7 +38,9 @@ function wp360_push_update( $transient ){
         $res->plugin = $custom_plugin_file;
         $res->new_version = $available_version;
         $res->tested = 'tester';
-        $res->package = 'https://github.com/KrishnaBtist/wp360-invoice-btist/archive/refs/tags/' . $available_version . '.zip';
+        // Update package name to match plugin slug
+        $plugin_slug = basename(dirname(__FILE__));
+        $res->package = 'https://github.com/KrishnaBtist/' . $plugin_slug . '/archive/refs/tags/' . $available_version . '.zip';
         $transient->response[$res->plugin] = $res;
     }
     return $transient;
