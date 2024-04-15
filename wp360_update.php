@@ -38,6 +38,35 @@ add_action('admin_init', function() {
 
 
 
+add_action('after_plugin_row', 'custom_plugin_update_notice', 10, 2);
+function custom_plugin_update_notice($plugin_file, $plugin_data) {
+    if ("wp360-invoice/wp360-invoice.php" === $plugin_file) {
+        $aviliable_version = get_option('wp360_plugin_available_version');
+        if (get_plugin_version() !=  $aviliable_version) {
+            ?>
+            <tr class="plugin-update-tr active wp360_alert_message" id="">
+                <td class="plugin-update colspanchange" colspan="4">
+                    <div class="update-message inline notice notice-warning notice-alt"> 
+                        <p>
+                            <?php
+                            printf(
+                                __('<a href="#" class="%s"> Update now.</a>', 'wp360-invoice'),
+                                'WP360 Invoice', // Plugin name
+                                'wp360-invoice-view-details', // View details link class
+                                urlencode($plugin_file), // Plugin file
+                                esc_html($aviliable_version), // Available version
+                                'wp360-invoice-update-click' // Update now link class
+                            );
+                            ?>
+                        </p>
+                   </div>
+                </td>
+            </tr> 
+            <?php
+        }
+    }
+}
+
 
 
 

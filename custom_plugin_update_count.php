@@ -2,16 +2,35 @@
 
 // add_filter('pre_set_site_transient_update_plugins', 'custom_plugin_update_count');
 // function custom_plugin_update_count($transient) {
-//     $custom_plugin_file = 'wp360-invoice/wp360-invoice.php';
-//     $available_version = get_option('wp360_plugin_available_version');
+//     // $custom_plugin_file = 'wp360-invoice/wp360-invoice.php';
+//     // $available_version = get_option('wp360_plugin_available_version');
+//     // $installed_version = get_plugin_data(WP_PLUGIN_DIR . '/' . $custom_plugin_file)['Version'];
+
+//  $plugin_basename = plugin_basename(__FILE__); // Get the plugin's basename
+//  $custom_plugin_file = dirname($plugin_basename) . '/wp360-invoice.php'; // Combine with '/wp360-invoice.php'
+//  $available_version = get_option('wp360_plugin_available_version');
 //     $installed_version = get_plugin_data(WP_PLUGIN_DIR . '/' . $custom_plugin_file)['Version'];
 //     if (!empty($available_version) && version_compare($available_version, $installed_version, '>')) {
 //         // Increment the update count
-//         if (!isset($transient->response[$custom_plugin_file])) {
-//             $transient->response[$custom_plugin_file] = new stdClass();
-//         }
-//         // Set update details
-//         $transient->response[$custom_plugin_file]->new_version = $available_version;
+
+//      $res = new stdClass();
+//      $res->slug = dirname($plugin_basename); // Extract the directory name as the slug
+//      $res->plugin = $custom_plugin_file;
+//      $res->new_version = $available_version;
+//      $res->tested = 'tester';
+//      $plugin_slug    = basename(dirname(__FILE__));
+//         $res->package = 'https://github.com/KrishnaBtist/wp360-invoice-btist/archive/refs/tags/1.1.2.zip';
+//      $transient->response[$res->plugin] = $res;
+
+
+
+
+//         // if (!isset($transient->response[$custom_plugin_file])) {
+//         //     $transient->response[$custom_plugin_file] = new stdClass();
+//         // }
+//         // $transient->response[$custom_plugin_file]->new_version = $available_version;
+
+
 //     }
 //     return $transient;
 // }
@@ -39,9 +58,9 @@ function wp360_push_update( $transient ){
         $res->new_version = $available_version;
         $res->tested = 'tester';
         $plugin_slug    = basename(dirname(__FILE__));
-        $res->package = 'https://github.com/KrishnaBtist/wp360-invoice-btist/archive/refs/tags/1.1.2.zip';
+      //  $res->package = 'https://github.com/';
         $transient->response[$res->plugin] = $res;
-        activate_plugin( $plugin_slug); // Reactivate
+        //activate_plugin( $plugin_slug); // Reactivate
     }
     return $transient;
 }
