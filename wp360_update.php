@@ -50,7 +50,7 @@ function custom_plugin_update_notice($plugin_file, $plugin_data) {
                         <p>
                             <?php
                             printf(
-                                __('<a href="#" class="%s"> Update now.</a>', 'wp360-invoice'),
+                                __('There is a new version of %s available. <a href="#" class="%s" data-slug="%s">View version %s details</a> or <a href="javascript:void(0)" class="%s"> Update now.</a>', 'wp360-invoice'),
                                 'WP360 Invoice', // Plugin name
                                 'wp360-invoice-view-details', // View details link class
                                 urlencode($plugin_file), // Plugin file
