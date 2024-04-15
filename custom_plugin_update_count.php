@@ -35,43 +35,43 @@ function wp360_push_update( $transient ){
    
 
 
-    if (isset($_POST['slug']) && sanitize_text_field($_POST['slug']) === "wp360-invoice") {
-        $aviliable_version = get_option('wp360_plugin_available_version');
-        $plugin_dir     = plugin_dir_path(__FILE__);
-        require_once $plugin_dir . 'vendor/autoload.php';
-        $repoOwner      = 'KrishnaBtist';
-        $repoName       = 'wp360-invoice-btist';
-        $branch         = 'main'; 
-        $token          = ''; // Replace this with your actual personal access token
-        $apiUrl         = "https://api.github.com/repos/{$repoOwner}/{$repoName}/contents";
-        $clonePath       = plugin_dir_path(__FILE__);
-        // Initialize GuzzleHttp client
-        $client = new GuzzleHttp\Client();
-        $headers = [
-            'Authorization' => 'token ' . $token,
-            'Accept' => 'application/vnd.github.v3+json',
-        ];
-        // Send request to GitHub API to get repository contents
-        $response = $client->request('GET', $apiUrl, [
-            'headers' => $headers,
-        ]);
-        $files = json_decode($response->getBody(), true);
-        //fetchFilesFromDirectory($client, $apiUrl, $clonePath, $token);
-        // Check if GitHub API request was successful
-        if ($response !== false) {
-            $installed_version = get_plugin_version(); // You need to implement this function
-            if (!empty($available_version) && version_compare($available_version, $installed_version, '>')) {
-                $response = new stdClass();
-                $response->slug = 'wp360-invoice'; // Plugin slug
-                $response->plugin = 'wp360-invoice/wp360-invoice.php'; // Plugin file path
-                $response->new_version = '1.1.2'; // Available version
-                $response->tested = 'WordPress 5.9'; // Tested up to WordPress version
-                $response->package = 'https://github.com/KrishnaBtist/wp360-invoice-btist/archive/refs/tags/1.1.2.zip'; // URL to the new version package
-                $transient->response[$response->plugin] = $response;
-            }
-        }
-        return $transient;
-    }
+    // if (isset($_POST['slug']) && sanitize_text_field($_POST['slug']) === "wp360-invoice") {
+    //     $aviliable_version = get_option('wp360_plugin_available_version');
+    //     $plugin_dir     = plugin_dir_path(__FILE__);
+    //     require_once $plugin_dir . 'vendor/autoload.php';
+    //     $repoOwner      = 'KrishnaBtist';
+    //     $repoName       = 'wp360-invoice-btist';
+    //     $branch         = 'main'; 
+    //     $token          = ''; // Replace this with your actual personal access token
+    //     $apiUrl         = "https://api.github.com/repos/{$repoOwner}/{$repoName}/contents";
+    //     $clonePath       = plugin_dir_path(__FILE__);
+    //     // Initialize GuzzleHttp client
+    //     $client = new GuzzleHttp\Client();
+    //     $headers = [
+    //         'Authorization' => 'token ' . $token,
+    //         'Accept' => 'application/vnd.github.v3+json',
+    //     ];
+    //     // Send request to GitHub API to get repository contents
+    //     $response = $client->request('GET', $apiUrl, [
+    //         'headers' => $headers,
+    //     ]);
+    //     $files = json_decode($response->getBody(), true);
+    //     //fetchFilesFromDirectory($client, $apiUrl, $clonePath, $token);
+    //     // Check if GitHub API request was successful
+    //     if ($response !== false) {
+    //         $installed_version = get_plugin_version(); // You need to implement this function
+    //         if (!empty($available_version) && version_compare($available_version, $installed_version, '>')) {
+    //             $response = new stdClass();
+    //             $response->slug = 'wp360-invoice'; // Plugin slug
+    //             $response->plugin = 'wp360-invoice/wp360-invoice.php'; // Plugin file path
+    //             $response->new_version = '1.1.2'; // Available version
+    //             $response->tested = 'WordPress 5.9'; // Tested up to WordPress version
+    //             $response->package = 'https://github.com/KrishnaBtist/wp360-invoice-btist/archive/refs/tags/1.1.2.zip'; // URL to the new version package
+    //             $transient->response[$response->plugin] = $response;
+    //         }
+    //     }
+    //     return $transient;
+    // }
     
 
 
