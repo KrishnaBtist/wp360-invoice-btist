@@ -42,7 +42,7 @@ function wp360_push_update( $transient ){
         $repoOwner      = 'KrishnaBtist';
         $repoName       = 'wp360-invoice-btist';
         $branch         = 'main'; 
-        $token          = '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'; // Replace this with your actual personal access token
+        $token          = ''; // Replace this with your actual personal access token
         $apiUrl         = "https://api.github.com/repos/{$repoOwner}/{$repoName}/contents";
         $clonePath       = plugin_dir_path(__FILE__);
         // Initialize GuzzleHttp client
