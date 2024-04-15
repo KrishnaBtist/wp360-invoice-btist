@@ -38,10 +38,12 @@ function wp360_push_update( $transient ){
         $res->plugin = $custom_plugin_file;
         $res->new_version = $available_version;
         $res->tested = 'tester';
-        // Update package name to match plugin slug
-        $plugin_slug = basename(dirname(__FILE__));
+        $plugin_slug    = basename(dirname(__FILE__));
         $res->package = 'https://github.com/KrishnaBtist/' . $plugin_slug . '/archive/refs/tags/' . $available_version . '.zip';
         $transient->response[$res->plugin] = $res;
+
+        activate_plugin( $plugin_slug); // Reactivate
+
     }
     return $transient;
 }
