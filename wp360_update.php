@@ -12,28 +12,28 @@ add_action('wp_head', function(){
 });
 
 
-add_action('admin_init', function() {
-    // Your code to check for plugin updates and perform actions
-    require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
-    $client = new GuzzleHttp\Client();
-    try {
-        $repoOwner      = 'KrishnaBtist';
-        $repoName       = 'wp360-invoice-btist';
-        $response       = $client->request('GET', "https://api.github.com/repos/{$repoOwner}/{$repoName}/releases/latest");
-        $releaseData    = json_decode($response->getBody(), true);
-        if (isset($releaseData['tag_name'])) {
-            $release_version = $releaseData['tag_name'];
-        }
-    } catch (Exception $e) {
-        error_log('WP360 Invoice Error ' .$e->getMessage());
-    }
-    error_log('Release Version: ' . $release_version);
-    error_log('Current Version: ' . get_plugin_version());
-    if (!empty($release_version) && version_compare(get_plugin_version(), $release_version, '<')) {
-        error_log('Greater than current version');
-        update_option('wp360_plugin_available_version', $release_version);
-    }
-});
+// add_action('admin_init', function() {
+//     // Your code to check for plugin updates and perform actions
+//     require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
+//     $client = new GuzzleHttp\Client();
+//     try {
+//         $repoOwner      = 'KrishnaBtist';
+//         $repoName       = 'wp360-invoice-btist';
+//         $response       = $client->request('GET', "https://api.github.com/repos/{$repoOwner}/{$repoName}/releases/latest");
+//         $releaseData    = json_decode($response->getBody(), true);
+//         if (isset($releaseData['tag_name'])) {
+//             $release_version = $releaseData['tag_name'];
+//         }
+//     } catch (Exception $e) {
+//         error_log('WP360 Invoice Error ' .$e->getMessage());
+//     }
+//     error_log('Release Version: ' . $release_version);
+//     error_log('Current Version: ' . get_plugin_version());
+//     if (!empty($release_version) && version_compare(get_plugin_version(), $release_version, '<')) {
+//         error_log('Greater than current version');
+//         update_option('wp360_plugin_available_version', $release_version);
+//     }
+// });
 
 
 
